@@ -3,7 +3,16 @@
 
 <% @episodes.each do |episode| %>
 <section>
-    <h2><%=episode.title%> - <em>Season <%= episode.season.number %></em> </h2>
+    <h2>
+    	<%=episode.title%> - 
+    	<em>Season <%= episode.season.number %></em> 
+
+    	<% if episode.watched? %>
+    		<em>Watched</em>
+    	<% else %>
+      	<%= button_to "MARK AS WATCHED", watched_episode_path(episode.id), :method => :put %>
+    	<% end %>
+    </h2>
     <p><%=episode.plot%></p>
 </section>
 <% end %>
