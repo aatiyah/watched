@@ -15,3 +15,7 @@
         <td><%=current_user.sign_in_count%></td>
     </tr>
 </table>
+
+<% current_user.episodes.each do |episode| %>
+	<h2><%= episode.title %></h2>	
+	<% end %>
