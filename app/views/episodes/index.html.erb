@@ -1,16 +1,17 @@
 <h1>Episodes</h1>
+<h3>User id: <%= current_user.id %></h3>
 <hr />
 
 <% @episodes.each do |episode| %>
 <section>
     <h2>
     	<%=episode.title%> - 
-    	<em>Season <%= episode.season.number %></em> 
+    	<span><em>Season <%= episode.season.number %></em></span>
 
-    	<% if episode.watched? %>
+    	<% if episode.watched? && episode.watched_by.include?(current_user.id) %>
     		<em>Watched</em>
-    	<% else %>
-      	<%= button_to "MARK AS WATCHED", watched_episode_path(episode.id), :method => :put %>
+  		<% else %>
+      	<span><%= button_to "MARK AS WATCHED", watched_episode_path(episode.id), :method => :put %></span>	
     	<% end %>
     </h2>
     <p><%=episode.plot%></p>

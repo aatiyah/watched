@@ -1,6 +1,6 @@
 User.create!([
-  {email: "usertwo@surveylocal.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: "2016-10-05 03:03:41", last_sign_in_at: "2016-10-04 19:45:28", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", username: "User Two"},
-  {email: "userone@surveylocal.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: "2016-10-05 03:23:53", last_sign_in_at: "2016-10-05 02:14:48", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", username: "User One"}
+  {email: "userone@surveylocal.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: "2016-10-05 03:23:53", last_sign_in_at: "2016-10-05 02:14:48", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", username: "User One"},
+  {email: "usertwo@surveylocal.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: "2016-10-05 03:03:41", last_sign_in_at: "2016-10-04 19:45:28", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", username: "User Two"}
 ])
 Episode.create!([
   {title: "The Cap Table", season_id: 4, number: 2, plot: "Richard hires Jared to design a business plan. Big Head is asked to work for Gavin Belson, where he discovers that Hooli has stolen the Pied Piper algorithm and calls it Nucleus. Meanwhile Richard struggles to get his money from Gregory.", released_at: "2014-04-13"},
