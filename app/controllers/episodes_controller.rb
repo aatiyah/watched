@@ -3,12 +3,13 @@ class EpisodesController < ApplicationController
   @@watched_by = []
 
   def index
-    @episodes = Episode.order released_at: :desc
+    @episodes = Episode.order released_at: :asc
     @watched_by = @@watched_by
   end
 
   def watched
   	@episode = Episode.find(params[:id])
 	  @episode.update_attributes(:watched => true, user_id: current_user.id, watched_by: @episode.watched_by.push(current_user.id))
+	  redirect_to "##{@episode.id}"
   end
 end

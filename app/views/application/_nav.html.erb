@@ -1,0 +1,25 @@
+<nav class="navbar navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<h4 class="text-white">Watched</h4>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="nav navbar-nav navbar-right">
+				<li><%= link_to 'Episodes', root_path %></li>
+				<li><%= link_to 'User Profile', users_profile_path %></li>
+				<% if user_signed_in? %>
+					<li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+				<% else %>
+				  <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li> 
+				  <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+				<% end %>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>

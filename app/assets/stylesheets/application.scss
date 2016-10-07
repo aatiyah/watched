@@ -17,7 +17,7 @@
 
 body {
   margin-top: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 70px;
   font-family: 'Raleway', sans-serif;
 }
 .starter-template {
@@ -44,9 +44,9 @@ nav {
 	color: white !important;
 }
 
-footer {
+.footer {
 	background-color: green;
-	height: 50px;
+	height: 60px;
 	padding-top: 15px; 
 }
 
@@ -57,4 +57,19 @@ footer {
 .devise {
 	padding-right: 20%;
 	padding-left: 20%;
+}
+
+.green-badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: green;
+  border-radius: 10px;
 }

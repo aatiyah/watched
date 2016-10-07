@@ -1,22 +1,29 @@
-<h1>Episodes</h1>
-<h3>User id: <%= current_user.id %></h3>
-<hr />
-
-<% @episodes.each do |episode| %>
-	<% if !episode.watched_by.include?(current_user.id) %>
-		<% episode.watched = false %>
-	<% end %>
-<section>
-    <h2>
-    	<%=episode.title%> - 
-    	<span><em>Season <%= episode.season.number %></em><%= episode.watched? %></span>
-
+<div id="episodes">
+	<h1 class="page-header text-success" id="top">All Episodes</h1>
+	<% @episodes.each do |episode| %>
+		<% if !episode.watched_by.include?(current_user.id) %>
+			<% episode.watched = false %>
+		<% end %>
+		
+		<div class="episodecard-index">
     	<% if episode.watched? && episode.watched_by.include?(current_user.id) %>
-    		<em>Watched</em>
+				<span class="badge pull-right">
+	    		<em>Watched</em>
+				</span>
   		<% else %>
-  		 	<span><%= button_to "MARK AS WATCHED", watched_episode_path(episode.id), :method => :put %></span>	
-    	<% end %>
-    </h2>
-    <p><%=episode.plot%></p>
-</section>
-<% end %>
+  		 	<span class="pull-right"><%= link_to "MARK AS WATCHED", watched_episode_path(episode.id), :method => :put, class: "text-success", class: "green-badge" %></span>	
+    	<% end %>				
+
+	    <h3 class="text-success" id="<%= episode.id %>">
+	    	<%= episode.title %> <small class="-textmuted"><%= "(Season #{episode.season.number})" %></small>	
+	    </h3>		
+
+	    <p><%= episode.plot %></p>
+	    <hr>
+		</div>
+	<% end %>
+	
+	<div class="text-center">
+		<%= link_to "Back To Top", "#top", class: "btn btn-success" %>
+	</div>
+</div>
