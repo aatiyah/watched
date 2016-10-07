@@ -16,7 +16,7 @@
 @import "bootstrap";
 
 body {
-  margin-top: 60px;
+  margin-top: 50px;
   margin-bottom: 70px;
   font-family: 'Raleway', sans-serif;
 }
@@ -32,7 +32,7 @@ nav {
 
 		&:hover {
 			background-color: green !important;
-			color: black;
+			color: gray;
 		}
 	}
 	h4 {
@@ -72,4 +72,12 @@ nav {
   text-align: center;
   background-color: green;
   border-radius: 10px;
+}
+
+.bottom-border {
+	border-bottom: 1px solid green;
+}
+
+.jumbotron {
+	padding-top: 10px;
 }

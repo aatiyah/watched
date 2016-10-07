@@ -1,42 +1,65 @@
-<h1 class="text-primary">User Profile</h1>
-<hr />
+<div id="profile">
+	<h1 class="page-header text-success text-capitalize" id="top">
+		User Profile
+	</h1>
 
-<table>
-    <tr>
-        <th>Name:</th>
-        <td><%=current_user.username%></td>
-    </tr>
-    <tr>
-        <th>Email:</th>
-        <td><%=current_user.email%></td>
-    </tr>
-    <tr>
-        <th>Logins:</th>
-        <td><%=current_user.sign_in_count%></td>
-    </tr>
-</table>
+	<table>
+	    <tr>
+	        <th>Name:</th>
+	        <td class="text-capitalize"><%= current_user.username %></td>
+	    </tr>
+	    <tr>
+	        <th>Email:</th>
+	        <td><%=current_user.email%></td>
+	    </tr>
+	    <tr>
+	        <th>Logins:</th>
+	        <td><%=current_user.sign_in_count%></td>
+	    </tr>
+	</table>
+	<br>
 
-<h2>Episodes watched</h2>
-
-<% @seasons.each do |season| %>
 	<% episodes_watched_in_season = 0 %>
-	<h2>Season <%= season.number %> (<%= season.episodes.length %>)</h2>
-
-	<% season.episodes.each do |episode| %>
-		<% if episode.watched_by.include?(current_user.id) %>
-			<% episodes_watched_in_season += 1 %>
-		<% end %>
-	<% end %>
-		<%= "episodes watched #{episodes_watched_in_season}" %>
-
-	<% if season.episodes.length != episodes_watched_in_season %>
-		<% season.episodes.each do |se| %>
-			<% if se.watched_by.include?(current_user.id) %>
-				<h4><%= se.title %></h4>
+	<% @seasons.each do |season| %>
+		<% season.episodes.each do |episode| %>
+			<% if episode.watched_by.include?(current_user.id) %>
+				<% episodes_watched_in_season += 1 %>
 			<% end %>
 		<% end %>
-	<% elsif season.episodes.length == episodes_watched_in_season %>
-		<em>All Episodes Watched</em>
+
+		<% if episodes_watched_in_season > 0 %>
+			<div class="jumbotron">
+				<h3 class="text-success bottom-border">
+					Season <%= season.number %>
+					<small class="text-muted">
+						(<%= season.episodes.length %> Episodes)		
+					</small>
+					
+
+					<small class="badge pull-right text-capitalize">	
+						<%= "episodes watched: #{episodes_watched_in_season}" %>
+					</small>
+				</h3>
+
+
+				<% if season.episodes.length != episodes_watched_in_season %>
+					<% season.episodes.each do |se| %>
+						<% if se.watched_by.include?(current_user.id) %>
+						<a class="text-primary" role="button" data-toggle="collapse" href="#<%= se.id %>" aria-expanded="false" aria-controls="collapseExample">
+						  <h4><%= se.title %></h4>
+						</a>
+						<div class="collapse" id="<%= se.id %>">
+						  <div class="well">
+						    <%= se.plot %>
+						  </div>
+						</div>
+						<% end %>
+					<% end %>
+				<% elsif season.episodes.length == episodes_watched_in_season %>
+					<em>All Episodes Watched</em>
+				<% end %>
+				<% episodes_watched_in_season = 0 %>
+			</div>
+		<% end %>
 	<% end %>
-	<% episodes_watched_in_season = 0 %>
-<% end %>
+</div>
