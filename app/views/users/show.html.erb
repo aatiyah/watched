@@ -35,6 +35,8 @@
 				<h4><%= se.title %></h4>
 			<% end %>
 		<% end %>
+	<% elsif season.episodes.length == episodes_watched_in_season %>
+		<em>All Episodes Watched</em>
 	<% end %>
 	<% episodes_watched_in_season = 0 %>
 <% end %>
