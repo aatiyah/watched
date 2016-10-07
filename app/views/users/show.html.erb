@@ -16,6 +16,25 @@
     </tr>
 </table>
 
-<% current_user.episodes.each do |episode| %>
-	<h2><%= episode.title %></h2>	
+<h2>Episodes watched</h2>
+
+<% @seasons.each do |season| %>
+	<% episodes_watched_in_season = 0 %>
+	<h2>Season <%= season.number %> (<%= season.episodes.length %>)</h2>
+
+	<% season.episodes.each do |episode| %>
+		<% if episode.watched_by.include?(current_user.id) %>
+			<% episodes_watched_in_season += 1 %>
+		<% end %>
 	<% end %>
+		<%= "episodes watched #{episodes_watched_in_season}" %>
+
+	<% if season.episodes.length != episodes_watched_in_season %>
+		<% season.episodes.each do |se| %>
+			<% if se.watched_by.include?(current_user.id) %>
+				<h4><%= se.title %></h4>
+			<% end %>
+		<% end %>
+	<% end %>
+	<% episodes_watched_in_season = 0 %>
+<% end %>
