@@ -2,13 +2,13 @@
 	<h1 class="page-header text-success" id="top">All Episodes</h1>
 	<% @episodes.each do |episode| %>
 		
-		<div class="episodecard-index">
+		<div id="episode-<%= episode.id %>">
     	<% if current_user.episodes.include?(episode) %>
 				<span class="badge pull-right">
 	    		<em>Watched</em>
 				</span>
   		<% else %>
-  		 	<span class="pull-right"><%= link_to "MARK AS WATCHED", watched_episode_path(episode.id), :method => :put, class: "text-success", class: "green-badge" %></span>	
+  		 	<span class="pull-right"><%= link_to "MARK AS WATCHED", watched_episode_path(episode.id), :method => :put, remote: true, class: "text-success green-badge", id: "mark_watched_btn" %></span>	
     	<% end %>				
 
 	    <h3 class="text-success" id="<%= episode.id %>">

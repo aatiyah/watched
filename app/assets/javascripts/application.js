@@ -16,3 +16,13 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
+$(function() {
+  $('#mark_watched_btn').
+    on('ajax:success',function(evt, data, status, xhr){
+      console.log('success:', data);
+      console.log("after")
+    }).
+    on('ajax:error',function(xhr, status, error){
+      console.log('failed:', error);
+    }); 
+});
