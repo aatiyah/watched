@@ -9,7 +9,7 @@ class EpisodesController < ApplicationController
 
   def watched
   	@episode = Episode.find(params[:id])
-	  @episode.update_attributes(:watched => true, user_id: current_user.id, watched_by: @episode.watched_by.push(current_user.id))
-	  redirect_to "##{@episode.id}"
+  	current_user.episodes << @episode
+	  redirect_to root_path
   end
 end

@@ -1,12 +1,9 @@
 <div id="episodes">
 	<h1 class="page-header text-success" id="top">All Episodes</h1>
 	<% @episodes.each do |episode| %>
-		<% if !episode.watched_by.include?(current_user.id) %>
-			<% episode.watched = false %>
-		<% end %>
 		
 		<div class="episodecard-index">
-    	<% if episode.watched? && episode.watched_by.include?(current_user.id) %>
+    	<% if current_user.episodes.include?(episode) %>
 				<span class="badge pull-right">
 	    		<em>Watched</em>
 				</span>

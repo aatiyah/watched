@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :episodes
+  has_many :watchedepisodes
+  has_many :episodes, through: :watchedepisodes
 end
