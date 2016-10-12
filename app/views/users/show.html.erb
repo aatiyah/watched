@@ -21,24 +21,28 @@
 
 	<% episodes_watched_in_season = 0 %>
 	<% @seasons.each do |season| %>
-		<% if !current_user.episodes.empty? %>
+		<% season.episodes.each do |episode| %>
+			<% if current_user.episodes.include?(episode) %>
+				<% episodes_watched_in_season += 1 %>
+			<% end %>
+		<% end %>
+
+		<% if episodes_watched_in_season > 0 %>
 			<div class="jumbotron">
 				<h3 class="text-success bottom-border">
 					Season <%= season.number %>
 					<small class="text-muted">
 						(<%= season.episodes.length %> Episodes)		
 					</small>
-					
 
 					<small class="badge pull-right text-capitalize">	
 						<%= "episodes watched: #{episodes_watched_in_season}" %>
 					</small>
 				</h3>
 
-
 				<% if season.episodes.length != episodes_watched_in_season %>
 					<% season.episodes.each do |se| %>
-						<% if current_user.episodes.include?(current_user.id) %>
+						<% if current_user.episodes.include?(se) %>
 						<a class="text-primary" role="button" data-toggle="collapse" href="#<%= se.id %>" aria-expanded="false" aria-controls="collapseExample">
 						  <h4><%= se.title %></h4>
 						</a>
